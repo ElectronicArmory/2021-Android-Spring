@@ -4,23 +4,112 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:clipChildren="false"
     tools:context=".SecondActivity">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView 2" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView 1" />
+
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Second Activity"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:clipChildren="false"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.25"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <Switch
-        android:id="@+id/switch1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Switch"
-        tools:layout_editor_absoluteX="159dp"
-        tools:layout_editor_absoluteY="211dp" />
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="0dp"
+            android:layout_height="117dp"
+            android:layout_marginBottom="16dp"
+            android:scaleType="fitCenter"
+            app:layout_constraintBottom_toTopOf="@+id/restaurantName"
+            app:layout_constraintEnd_toStartOf="@+id/switch1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@tools:sample/backgrounds/scenic[0]"
+            tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+        <TextView
+            android:id="@+id/restaurantName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:gravity="center"
+            android:text=" Restaurant Fantastic Food Place to this text view view"
+            android:textSize="30sp"
+            app:autoSizeMaxTextSize="20sp"
+            app:autoSizeMinTextSize="12sp"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Switch
+            android:id="@+id/switch1"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Switch"
+            app:layout_constraintBottom_toTopOf="@+id/restaurantName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="312dp"
+        android:layout_height="206dp"
+        android:background="@drawable/ic_launcher_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/restaurantName2"
+            android:layout_width="156dp"
+            android:layout_height="79dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="#FFFFFF"
+            android:gravity="center"
+            android:lines="1"
+            android:paddingStart="5dp"
+            android:paddingTop="15dp"
+            android:paddingEnd="5dp"
+            android:singleLine="true"
+            android:text="Restaurant Fantastic Food Place to this text view view"
+            android:textSize="30sp"
+            app:autoSizeMaxTextSize="20sp"
+            app:autoSizeMinTextSize="9sp"
+            app:autoSizeTextType="uniform"
+            app:flow_wrapMode="none"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
