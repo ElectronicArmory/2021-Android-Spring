@@ -10,8 +10,8 @@ class SecondActivity : AppCompatActivity() {
         setContentView(R.layout.activity_second)
 
         val someDataFromIntent = intent.getStringExtra("SomeString")
-        val textView = findViewById<TextView>(R.id.textView2)
-        textView.text = someDataFromIntent
+//        val textView = findViewById<TextView>(R.id.textView2)
+//        textView.text = someDataFromIntent
 
 
     }

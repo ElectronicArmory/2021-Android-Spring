@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Camera</string>
+    <string name="permission_title">Permission to access camera</string>
+    <string name="permission_message">To add a profile photo, we need access to your camera</string>
 </resources>

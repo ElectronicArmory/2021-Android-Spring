@@ -26,12 +26,13 @@ class MainActivity : AppCompatActivity() {
             val cameraCheckPermission = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
 
             if (cameraCheckPermission != PackageManager.PERMISSION_GRANTED){
-                if( ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.CAMERA) == true){
+                if(ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.CAMERA)){
                     val builder = AlertDialog.Builder(this)
 
-                    builder.setTitle("Permission to access camera")
-                            .setMessage("To add a profile photo, we need access to your camera")
-                            .setPositiveButton("OK") { dialog, id ->
+                    val message = getString(R.string.permission_message)
+                    builder.setTitle(R.string.permission_title)
+                            .setMessage(message)
+                            .setPositiveButton("OK") { _, _ ->
                                 requestPermission()
                             }
 
@@ -55,7 +56,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun requestPermission() {
-        ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.CAMERA), 123)
+        ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CAMERA), 123)
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
