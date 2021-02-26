@@ -14,6 +14,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setTheme(R.style.ThemeOverlay_AppCompat_Dark)
         setContentView(R.layout.activity_main)
 
         val bitcoinTextView = findViewById<TextView>(R.id.bitcoinTextView)
