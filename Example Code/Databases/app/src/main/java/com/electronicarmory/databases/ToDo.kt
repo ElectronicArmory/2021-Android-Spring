@@ -8,6 +8,6 @@ data class ToDo(
     @Id
     var id:Long = 0,
     var title:String = "New Todo",
-    var description:String,
+    var description:String = "",
     val isDone:Boolean = false,
-    var dueDate:String)
+    var dueDate:String = "Monday")
