@@ -5,7 +5,7 @@
   "entities": [
     {
       "id": "1:6594808147738586050",
-      "lastPropertyId": "5:4193568586339043514",
+      "lastPropertyId": "7:6296700565662768661",
       "name": "ToDo",
       "properties": [
         {
@@ -20,11 +20,6 @@
           "type": 9
         },
         {
-          "id": "3:3316138187179824004",
-          "name": "description",
-          "type": 9
-        },
-        {
           "id": "4:2980526815990554825",
           "name": "isDone",
           "type": 1,
@@ -33,6 +28,11 @@
         {
           "id": "5:4193568586339043514",
           "name": "dueDate",
+          "type": 9
+        },
+        {
+          "id": "7:6296700565662768661",
+          "name": "description",
           "type": 9
         }
       ],
@@ -47,7 +47,10 @@
   "modelVersionParserMinimum": 5,
   "retiredEntityUids": [],
   "retiredIndexUids": [],
-  "retiredPropertyUids": [],
+  "retiredPropertyUids": [
+    3316138187179824004,
+    4360529498478778819
+  ],
   "retiredRelationUids": [],
   "version": 1
 }

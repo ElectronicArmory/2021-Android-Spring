@@ -2,6 +2,7 @@ package com.electronicarmory.webservices
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -37,7 +38,6 @@ class MainActivity : AppCompatActivity() {
                     val resp = response?.body()?.bpi?.USD
                     this@MainActivity.currentPrice = resp?.rate ?: "Unknown"
 
-
                     resp?.symbol?.let {
                         it.length
 
@@ -53,6 +53,12 @@ class MainActivity : AppCompatActivity() {
         refreshButton.setOnClickListener {
             serviceDownloader.getBitcoinPrice(callback)
         }
+        val reusableClickListener = { view: View ->
+            serviceDownloader.getBitcoinPrice(callback)
+            Log.d("BSU", view.toString())
+        }
+
+//        refreshButton.setOnClickListener(reusableClickListener)
 
     }
 }
