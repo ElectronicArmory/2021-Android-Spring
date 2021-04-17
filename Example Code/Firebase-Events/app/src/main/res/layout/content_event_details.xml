@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:showIn="@layout/activity_event_details"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.electronicarmory.EventDetailsActivity">
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <TextView
+                android:text="Event Title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/eventTitleTextView" android:textSize="26sp"
+                android:textStyle="bold" android:layout_marginLeft="15dp" android:layout_marginBottom="10dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" android:layout_marginTop="15dp"/>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:layout_marginTop="10dp" android:layout_marginBottom="10dp">
+            <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:id="@+id/imageView" android:layout_weight="0" android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp" app:srcCompat="@drawable/person" android:layout_marginTop="2dp"/>
+            <TextView
+                    android:text="Hosted by:"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/eventHostedByTextView"
+                    android:textSize="22sp" android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:layout_marginTop="10dp" android:layout_marginBottom="10dp">
+            <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp" app:srcCompat="@drawable/clock"
+                    android:id="@+id/timeImageView" android:layout_marginLeft="15dp" android:layout_marginRight="15dp"
+                    android:layout_marginTop="2dp"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/eventDateTextView" android:textSize="22sp"
+                    android:text="Thur, Apr 20 @ 4:00-5:00PM"/>
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:layout_marginTop="10dp" android:layout_marginBottom="10dp">
+            <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp" app:srcCompat="@drawable/pin" android:id="@+id/imageView3"
+                    android:layout_weight="0" android:layout_marginLeft="15dp" android:layout_marginRight="15dp"
+                    android:layout_marginTop="5dp"/>
+            <TextView
+                    android:text="Electronic Armory\n 12345 W Boise Ave.  \nBoise, ID 83702"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/eventLocationTextView"
+                    android:textSize="22sp"/>
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:layout_marginTop="10dp" android:layout_marginBottom="10dp"
+                android:layout_marginLeft="15dp" android:layout_marginRight="15dp">
+            <TextView
+                    android:text="Event description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/eventDescriptionTextView"
+                    android:textSize="22sp" android:layout_marginTop="10dp" android:layout_marginBottom="10dp"/>
+        </LinearLayout>
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

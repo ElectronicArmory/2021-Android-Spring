@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">BSU Events</string>
+    <string name="title_events">Events</string>
+    <string name="title_people">People</string>
+    <string name="title_activity_event_details">Event</string>
+    <string name="action_settings">Settings</string>
+</resources>
