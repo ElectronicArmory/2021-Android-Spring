@@ -9,7 +9,7 @@ class BitcoinPriceService {
 
     init{
         val retrofit = Retrofit.Builder().
-        baseUrl("https://api.coindesk.com/v1/").
+        baseUrl(BuildConfig.WEB_SERVER).
         addConverterFactory(GsonConverterFactory.create()).
         build()
         service = retrofit.create(CoinDeskApi::class.java)

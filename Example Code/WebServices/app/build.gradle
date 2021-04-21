@@ -21,6 +21,20 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField("String", "WEB_SERVER", "\"https://api.coindesk.com/v1/\"")
+            resValue("string", "debug_button", "Release Button")
+        }
+        staging {
+            buildConfigField("String", "WEB_SERVER", "\"https://api.coindesk.com/v1/\"")
+            resValue("string", "debug_button", "Staging Button")
+        }
+        qa {
+            buildConfigField("String", "WEB_SERVER", "\"https://api.coindesk.com/v1/\"")
+            resValue("string", "debug_button", "Staging Button")
+        }
+        dev {
+            buildConfigField("String", "WEB_SERVER", "\"https://dev.api.coindesk.com/v1/\"")
+            resValue("string", "debug_button", "Debug Button")
         }
     }
     compileOptions {
