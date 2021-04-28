@@ -6,12 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
-import edu.boisestate.getitdone.ObjectBox
 import edu.boisestate.getitdone.R
 import edu.boisestate.getitdone.ToDoItemCrudActivity
 import edu.boisestate.getitdone.ToDoManager
 import edu.boisestate.getitdone.models.ToDoItem
-import io.objectbox.Box
 import kotlinx.android.synthetic.main.to_do_item_crud_fragment.*
 import kotlinx.android.synthetic.main.to_do_item_crud_fragment.view.*
 
@@ -58,7 +56,8 @@ class ToDoItemCrudFragment : Fragment() {
             else{
                 todoItem?.todoTitle = todoTitle
                 todoItem?.todoDescription = todoDescription
-                ToDoManager.updateTodo(todoItem!!)
+
+                ToDoManager.saveToDo(todoItem!!)
             }
             requireActivity().finish()
         }

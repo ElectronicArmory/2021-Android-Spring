@@ -1,12 +1,15 @@
 package edu.boisestate.getitdone
 
 import android.util.Log
+import edu.boisestate.getitdone.models.StoreModel
+
 import edu.boisestate.getitdone.models.ToDoItem
 import edu.boisestate.getitdone.models.ToDoItem_
 import io.objectbox.Box
 import io.objectbox.BoxStore
 import io.objectbox.kotlin.query
 import io.objectbox.query.QueryBuilder
+import io.objectbox.relation.ToOne
 import org.greenrobot.eventbus.EventBus
 import retrofit2.Call
 import retrofit2.Callback
@@ -14,9 +17,11 @@ import retrofit2.Response
 import java.util.*
 
 object ToDoManager {
-    private var mToDoList = mutableListOf<ToDoItem>()
+    private val mToDoList = mutableListOf<ToDoItem>()
+    private val mToDoFromServer = mutableListOf<ToDoItem>()
 
     private val todoBox: Box<ToDoItem> = ObjectBox.boxStore.boxFor(ToDoItem::class.java)
+    private val storeModelBox: Box<StoreModel> = ObjectBox.boxStore.boxFor(StoreModel::class.java)
 
     private val query = todoBox.query {
         order(ToDoItem_.todoPriority, QueryBuilder.DESCENDING)
@@ -39,7 +44,8 @@ object ToDoManager {
             if( response?.isSuccessful()){
                 Log.d("BSU", response.body()!!.toString())
                 addToDoItems(response.body()!!)
-
+                mToDoFromServer.clear()
+                mToDoFromServer.addAll(response.body()!!)
                 EventBus.getDefault().post(NewTodoItemsEvent())
             }
         }
@@ -50,15 +56,12 @@ object ToDoManager {
     }
 
     fun todoList(): List<ToDoItem> {
-        return mToDoList
-    }
+        val results = query.find()
+        mToDoList.clear()
+        mToDoList.addAll(mToDoFromServer)
+        mToDoList.addAll(results)
 
-    fun updateTodo(todoItem:ToDoItem){
-        mToDoList = mutableListOf<ToDoItem>()
-        mToDoList.addAll( query.find() )
-        mToDoList.add(todoItem)
-        todoBox.put(todoItem)
-        EventBus.getDefault().post(NewTodoItemsEvent())
+        return mToDoList
     }
 
     fun addToDoItem( toDoTitle:String, toDoDescription:String = "", toDoDueDate:String = "", toDoPriority:Int = 9){
@@ -70,16 +73,30 @@ object ToDoManager {
             dueDate = Date(toDoDueDate)
         }
 
-        val newToDoItem = ToDoItem(todoTitle = toDoTitle, todoDescription = toDoDescription, isDone = false, todoDueDate = "", todoPriority = toDoPriority)
+        val groceryStore = StoreModel(storeName = "Grocery Store is US", storeNumber = "123ABC")
+        storeModelBox.put(groceryStore)
+
+        val newToDoItem = ToDoItem(
+            todoTitle = toDoTitle,
+            todoDescription = toDoDescription,
+            isDone = false,
+            todoDueDate = "",
+            todoPriority = toDoPriority
+        )
 
         addToDoItem(newToDoItem)
 
         todoBox.put(newToDoItem)
 
-//        EventBus.getDefault().post(NewTodoItemsEvent())
+        EventBus.getDefault().post(NewTodoItemsEvent())
     }
 
     private fun addToDoItem(newItem: ToDoItem) {
+        val groceryStore = StoreModel(storeName = "Grocery Store is US", storeNumber = "123ABC")
+        storeModelBox.put(groceryStore)
+
+        newItem.storeToBePurchased.target = groceryStore
+        todoBox.put(newItem)
         mToDoList.add(newItem)
         EventBus.getDefault().post(NewTodoItemsEvent())
     }
@@ -99,6 +116,10 @@ object ToDoManager {
      */
     fun removeToDo( todoToRemove:ToDoItem ){
         mToDoList.remove(todoToRemove)
+    }
+
+    fun saveToDo(todoItem:ToDoItem){
+        todoBox.put(todoItem)
     }
 
 }
